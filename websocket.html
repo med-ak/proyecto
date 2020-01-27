@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+
+let socket = new WebSocket("ws://127.0.0.1:9990");
+var g_idMensaje = 0;
+function dameIdMensaje()
+{
+    g_idMensaje++;
+    return g_idMensaje;
+
+}
+
+function iniciar()
+{
+    var user =  document.form.tusuario.value;
+    var password = document.form.tpassword.value;
+    var id_mensaje = dameIdMensaje();
+
+var mensajeJson = {action: "login", id: id_mensaje, user: user, password: password};
+
+socket.send(JSON.stringify(mensajeJson));
+}
+
+
+
+
+socket.onopen = function(e) {
+  console.log("conexion con el servidor");
+};
+
+socket.onmessage = function(event) {
+
+    console.log(event.data);
+
+    var object = JSON.parse(event.data);
+/*
+    if(object.action == "response")
+    {
+        gestionarRespuesta(object);
+    }
+    else if (object.action == "statuChanged")
+    {
+    var taskId = object.taskId;
+
+    }
+    document.getElementById("received_messages").innerHTML += "<div>" + object.message + "</div>";
+*/
+var respuesta = new object();
+respuesta.type = 1;
+repuesta.message = "Todo bien";
+socket.send(JSON.stringify(respuesta));
+
+
+
+};
+
+socket.onclose = function(event) {
+  if (event.wasClean) {
+    alert(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
+  } else {
+    // e.g. server process killed or network down
+    // event.code is usually 1006 in this case
+    alert('[close] Connection died');
+  }
+};
+
+socket.onerror = function(error) {
+  alert(`[error] ${error.message}`);
+};
+</script>
+</head>
+<body>
+<FORM name=form action="TU_PAGINA_WEB.HTML">
+
+<P>Usuario:    <INPUT type=text name=tusuario> 
+<P>Contraseña: <INPUT type=password name=tpassword> 
+<INPUT onclick=iniciar() type=button value=Acceder>
+
+</FORM> 
+</body>
+</html>
