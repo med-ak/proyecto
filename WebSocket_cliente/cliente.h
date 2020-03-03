@@ -1,31 +1,53 @@
 #ifndef CLIENTE_H
 #define CLIENTE_H
 
-#include <QDialog>
 #include <memory>
 #include "ixwebsocket/IXWebSocket.h"
-namespace Ui {
-class Cliente;
-}
+#include "ixwebsocket/IXSocketOpenSSL.h"
+#include "json.hpp"
+#include <map>
+#include <functional>
+#include <QString>
 
-class Cliente : public QDialog
+
+class MainWindow;
+
+using JSON = nlohmann::json;
+
+struct DatosCliente
 {
-    Q_OBJECT
-    std::shared_ptr<ix::WebSocket> m_webSocket;
+    int c_idCliente;
+    QString c_nombre;
+    QString c_apellidos;
+    QString c_dni;
+    QString c_telefono;
+    QString c_email;
+};
 
+
+class Cliente
+{
 public:
-    explicit Cliente(QWidget *parent = nullptr);
-    ~Cliente();
+
+    std::shared_ptr<ix::WebSocket> m_webSocket;
     void setWebSocket(std::shared_ptr<ix::WebSocket> webSocket);
 
-private slots:
+    MainWindow *m_mainWindow {nullptr};
+    void setMainWindow(MainWindow *mainWindow);
 
-    void on_ButtonBuscar_clicked();
+
+    Cliente();
+
+    
+    int m_sendMessageCounter {0};
+    int newMessageId();
 
 
-private:
-    Ui::Cliente *ui;
-    int txtID =0;
+    void VerRespuesta(JSON respuesta);
+    void RespuestaBorrarCliente(JSON respuesta);
+
+    void respuestaLista(DatosCliente);
+
 };
 
 #endif // CLIENTE_H

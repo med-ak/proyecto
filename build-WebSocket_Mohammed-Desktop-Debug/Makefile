@@ -38,7 +38,7 @@ DISTNAME      = WebSocket_Mohammed1.0.0
 DISTDIR = /home/moha/Escritorio/TrabajoMohamed/build-WebSocket_Mohammed-Desktop-Debug/.tmp/WebSocket_Mohammed1.0.0
 LINK          = g++
 LFLAGS        = 
-LIBS          = $(SUBLIBS) -pthread -lz -L/home/moha/Escritorio/TrabajoMohamed/WebSocket_Mohammed/../compiled2/lib/ -lixwebsocket -lQt5Sql -L/usr/lib64 -lQt5Core -lpthread 
+LIBS          = $(SUBLIBS) -pthread -lz -lssl -lcrypto -L/home/moha/Escritorio/TrabajoMohamed/WebSocket_Mohammed/../compiled2/lib/ -lixwebsocket -lQt5Sql -L/usr/lib64 -lQt5Core -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -683,10 +683,33 @@ main.o: ../WebSocket_Mohammed/main.cpp ../compiled2/include/ixwebsocket/IXWebSoc
 		../compiled2/include/ixwebsocket/IXSocket.h \
 		../compiled2/include/ixwebsocket/IXWebSocketInitResult.h \
 		../compiled2/include/ixwebsocket/IXWebSocketPerMessageDeflate.h \
-		../WebSocket_Mohammed/json.hpp
+		../WebSocket_Mohammed/json.hpp \
+		../WebSocket_Mohammed/cliente.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../WebSocket_Mohammed/main.cpp
 
-cliente.o: ../WebSocket_Mohammed/cliente.cpp ../WebSocket_Mohammed/cliente.h
+cliente.o: ../WebSocket_Mohammed/cliente.cpp ../WebSocket_Mohammed/cliente.h \
+		../WebSocket_Mohammed/json.hpp \
+		../compiled2/include/ixwebsocket/IXWebSocketServer.h \
+		../compiled2/include/ixwebsocket/IXSocketServer.h \
+		../compiled2/include/ixwebsocket/IXConnectionState.h \
+		../compiled2/include/ixwebsocket/IXSocketTLSOptions.h \
+		../compiled2/include/ixwebsocket/IXWebSocket.h \
+		../compiled2/include/ixwebsocket/IXProgressCallback.h \
+		../compiled2/include/ixwebsocket/IXWebSocketCloseConstants.h \
+		../compiled2/include/ixwebsocket/IXWebSocketErrorInfo.h \
+		../compiled2/include/ixwebsocket/IXWebSocketHttpHeaders.h \
+		../compiled2/include/ixwebsocket/IXCancellationRequest.h \
+		../compiled2/include/ixwebsocket/IXWebSocketMessage.h \
+		../compiled2/include/ixwebsocket/IXWebSocketCloseInfo.h \
+		../compiled2/include/ixwebsocket/IXWebSocketMessageType.h \
+		../compiled2/include/ixwebsocket/IXWebSocketOpenInfo.h \
+		../compiled2/include/ixwebsocket/IXWebSocketPerMessageDeflateOptions.h \
+		../compiled2/include/ixwebsocket/IXWebSocketSendInfo.h \
+		../compiled2/include/ixwebsocket/IXWebSocketTransport.h \
+		../compiled2/include/ixwebsocket/IXWebSocketHandshake.h \
+		../compiled2/include/ixwebsocket/IXSocket.h \
+		../compiled2/include/ixwebsocket/IXWebSocketInitResult.h \
+		../compiled2/include/ixwebsocket/IXWebSocketPerMessageDeflate.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cliente.o ../WebSocket_Mohammed/cliente.cpp
 
 ####### Install

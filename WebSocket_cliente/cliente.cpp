@@ -1,22 +1,45 @@
+#include <iostream>
 #include "cliente.h"
 #include "ui_cliente.h"
 #include "json.hpp"
 #include <QString>
 #include <QDebug>
 #include "mainwindow.h"
+#include <QTimer>
+#include "mainwindow.h"
+#include "clienteview.h"
+#include <QMessageBox>
+
+/*!\file*/
+/////////////////////////////////////////////////
+/// ... Este Clase se encarga de reciber los datos en JSON y enviarlos ala Tabla...
+/////////////////////////////////////////////////
 
 using JSON = nlohmann::json;
-
-Cliente::Cliente(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::Cliente)
+int Cliente::newMessageId()
 {
-    ui->setupUi(this);
+    return ++m_sendMessageCounter;
+}
+void Cliente::VerRespuesta(JSON respuesta)
+{
+
+    DatosCliente datosCliente;
+
+    datosCliente.c_idCliente = respuesta["id"];
+    datosCliente.c_nombre = QString::fromStdString(respuesta["nombre"]);
+    datosCliente.c_apellidos = QString::fromStdString(respuesta["apellidos"]);
+    datosCliente.c_dni = QString::fromStdString(respuesta["dni"]);
+    datosCliente.c_telefono = QString::fromStdString(respuesta["telefono"]);
+    datosCliente.c_email = QString::fromStdString(respuesta["email"]);
+
+    m_mainWindow->clienteView()->rellenarTabla(datosCliente);
+
 }
 
-Cliente::~Cliente()
+
+Cliente::Cliente()
 {
-    delete ui;
+
 }
 
 void Cliente::setWebSocket(std::shared_ptr<ix::WebSocket> webSocket)
@@ -24,12 +47,12 @@ void Cliente::setWebSocket(std::shared_ptr<ix::WebSocket> webSocket)
     m_webSocket = webSocket;
 }
 
-void Cliente::on_ButtonBuscar_clicked()
-{
-    txtID = ui->txt_id->text().toInt();
-    qDebug()<< txtID;
-    JSON jsonMessage = {{"action","BuscarCliente"},{"id",txtID}};
-    std::string messageToSend = jsonMessage.dump();
-    m_webSocket->send(messageToSend);
 
+void Cliente::setMainWindow(MainWindow *mainWindow)
+{
+    m_mainWindow = mainWindow;
 }
+
+
+
+

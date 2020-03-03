@@ -1,2 +1,14 @@
-<!DOCTYPE RCC>
-<RCC version="1.0"/>
+<RCC>
+    <qresource prefix="/">
+        <file>ayadir.png</file>
+        <file>borrar.png</file>
+        <file>buscar.png</file>
+        <file>clientes.png</file>
+        <file>facturas.png</file>
+        <file>iconos.qrc</file>
+        <file>modificar.png</file>
+        <file>pedidos.png</file>
+        <file>productos.png</file>
+        <file>proveedores.png</file>
+    </qresource>
+</RCC>

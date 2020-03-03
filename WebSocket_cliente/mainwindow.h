@@ -3,11 +3,13 @@
 
 #include <QMainWindow>
 #include "ixwebsocket/IXWebSocket.h"
-
+#include "ixwebsocket/IXSocketOpenSSL.h"
 #include "cliente.h"
+#include "clienteview.h"
 #include <memory>
+#include <map>
+#include <functional>
 
-//using JSON = nlohmann::json;
 
 namespace Ui {
 class MainWindow;
@@ -16,24 +18,34 @@ class MainWindow;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+
 public:
+    std::map<int, std::function<void(JSON)>> m_actions;
+
     std::shared_ptr<ix::WebSocket> m_webSocket;
 
+
  private slots:
-    void startWSServer();
+
+    void startWSClient();
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    JSON respuesta;
+    ClienteView* clienteView();
+
 
 private slots:
-
 
     void on_ButtonCliente_clicked();
 
 private:
+
     Ui::MainWindow *ui;
     Cliente *cliente;
+    ClienteView *clienteview;
+
 
 };
 

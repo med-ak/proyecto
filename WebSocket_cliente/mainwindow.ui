@@ -6,39 +6,231 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1014</width>
-    <height>639</height>
+    <width>1208</width>
+    <height>604</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Gestión de venta</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="img/iconos.qrc">
+    <normaloff>:/productos.png</normaloff>:/productos.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="ButtonCliente">
-    <property name="geometry">
-     <rect>
-      <x>450</x>
-      <y>220</y>
-      <width>211</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>24</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Clientes</string>
-    </property>
-   </widget>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="1" column="0">
+     <widget class="QPushButton" name="ButtonCliente">
+      <property name="minimumSize">
+       <size>
+        <width>300</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>300</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>24</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>  Clientes</string>
+      </property>
+      <property name="icon">
+       <iconset resource="img/iconos.qrc">
+        <normaloff>:/clientes.png</normaloff>:/clientes.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>80</width>
+        <height>80</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QPushButton" name="ButtonProveedores">
+      <property name="minimumSize">
+       <size>
+        <width>300</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>300</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>24</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>  Proveedores</string>
+      </property>
+      <property name="icon">
+       <iconset resource="img/iconos.qrc">
+        <normaloff>:/proveedores.png</normaloff>:/proveedores.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>80</width>
+        <height>80</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QPushButton" name="ButtonFacturas">
+      <property name="minimumSize">
+       <size>
+        <width>300</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>300</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>24</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>  Facturas</string>
+      </property>
+      <property name="icon">
+       <iconset resource="img/iconos.qrc">
+        <normaloff>:/facturas.png</normaloff>:/facturas.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>80</width>
+        <height>80</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QPushButton" name="ButtonProductos">
+      <property name="minimumSize">
+       <size>
+        <width>300</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>300</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>24</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>  Productos</string>
+      </property>
+      <property name="icon">
+       <iconset resource="img/iconos.qrc">
+        <normaloff>:/productos.png</normaloff>:/productos.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>80</width>
+        <height>80</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QPushButton" name="ButtonPedidos">
+      <property name="minimumSize">
+       <size>
+        <width>300</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>300</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>24</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>  Pedidos</string>
+      </property>
+      <property name="icon">
+       <iconset resource="img/iconos.qrc">
+        <normaloff>:/pedidos.png</normaloff>:/pedidos.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>80</width>
+        <height>80</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="2">
+     <widget class="QPushButton" name="ButtonUsuarios">
+      <property name="minimumSize">
+       <size>
+        <width>300</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>300</width>
+        <height>100</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>24</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>  Usuarios</string>
+      </property>
+      <property name="icon">
+       <iconset resource="img/iconos.qrc">
+        <normaloff>:/clientes.png</normaloff>:/clientes.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>80</width>
+        <height>80</height>
+       </size>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1014</width>
+     <width>1208</width>
      <height>30</height>
     </rect>
    </property>
@@ -54,6 +246,10 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="img/iconos.qrc"/>
+  <include location="img/iconos.qrc"/>
+  <include location="img/iconos.qrc"/>
+ </resources>
  <connections/>
 </ui>

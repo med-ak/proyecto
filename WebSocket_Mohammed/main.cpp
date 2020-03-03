@@ -2,6 +2,8 @@
 #include "ixwebsocket/IXWebSocketServer.h"
 #include "ixwebsocket/IXWebSocket.h"
 #include "ixwebsocket/IXConnectionState.h"
+#include "ixwebsocket/IXSocketTLSOptions.h"
+#include "ixwebsocket/IXSocketOpenSSL.h"
 #include "json.hpp"
 #include <QSqlError>
 #include <QSqlDatabase>
@@ -10,47 +12,25 @@
 #include <QSqlRecord>
 #include "cliente.h"
 
+/*!\file*/
+
 using JSON = nlohmann::json;
-/*static int g_idMensaje =0;
 
-int dameIdMensaje(){
-
-    g_idMensaje++;
-    return g_idMensaje;
-}*/
-
+static QSqlDatabase db;
 bool exists(const JSON& json, const std::string& key){
     return json.find(key) !=json.end();
 }
 
+/**
+ * funcion principal del programa
+ */
 
-JSON Buscar_cliente(JSON receivedObject){
-
-    JSON respuesta;
-    int Loadid=receivedObject["id"];
-
-    qDebug() << "ID: " << Loadid;
-    Cliente c;
-    c.load(Loadid);
-
-    JSON datos;
-
-    datos["id"] = c.m_idCliente;
-    datos["nombre"] = c.m_nombre.toStdString();
-    datos["apellidos"] = c.m_apellidos.toStdString();
-    datos["dni"] = c.m_dni.toStdString();
-    datos["telefono"] = c.m_telefono.toStdString();
-    datos["email"] = c.m_email.toStdString();
-
-    respuesta["responder"] = datos;
-    return  respuesta;
-}
-
-
-int main(int argc, char *argv[])
+int main()
 {
+
     ///conexion con la base de datos
-    QSqlDatabase db = QSqlDatabase::addDatabase("QPSQL");
+
+    db = QSqlDatabase::addDatabase("QPSQL");
     db.setHostName("localhost");
     db.setDatabaseName("venta");
     db.setPort(5432);
@@ -60,16 +40,37 @@ int main(int argc, char *argv[])
     qDebug()<< ok;
     qDebug()<< db.lastError().text();
 
-    /*if (ok)
+ /*   if (ok)
     {
        Cliente c;
-       c.load(4);
-       c.setCliente("moha","aknioui","yyyyy","55555","dddd");
-       c.save();
-    } // end if*/
+     c.load(9);
+      //  c.setCliente("moha","aknioui","yyyyy","55555","dddd");
+      //  c.save();
+      c.remove();
 
-    /// Servidor WebSocket
-  ix::WebSocketServer server(9990, "0.0.0.0");
+
+    } // end if
+*/
+   /// Servidor WebSocket
+    ix::WebSocketServer server(9990, "0.0.0.0");
+
+   /// SSL
+    ix::SocketTLSOptions tlsOptions;
+    tlsOptions.tls =true;
+    tlsOptions.certFile = "../WebSocket_Mohammed/cert/localhost.crt";
+    tlsOptions.keyFile = "../WebSocket_Mohammed/cert/localhost.key";
+    tlsOptions.caFile = "NONE";
+
+
+  if(tlsOptions.isValid()){
+  std::cerr <<"SSL valid"<< std::endl;
+  }
+
+  server.setTLSOptions(tlsOptions);
+
+  /**
+   *  funcion lambda: enviar y recibir mensajes JSON
+   */
 
     server.setOnConnectionCallback(
         [&server](std::shared_ptr<ix::WebSocket> webSocket,
@@ -78,11 +79,12 @@ int main(int argc, char *argv[])
             webSocket->setOnMessageCallback(
                 [webSocket, connectionState, &server](const ix::WebSocketMessagePtr msg)
                 {
+
                     if (msg->type == ix::WebSocketMessageType::Open)
                     {
                         std::cout << "conexion con el cliente" << std::endl;
 
-                 }
+                    }
                     else if (msg->type == ix::WebSocketMessageType::Close)
                     {
                         std::cout << "Bye bye connection" << std::endl;
@@ -91,24 +93,50 @@ int main(int argc, char *argv[])
                     {
                         if (!msg->binary)
                         {
-                            /// Text format
+
                             std::cout << "Received message: " << msg->str << std::endl;
                         }
                             // webSocket->send(msg->str, msg->binary);
                         JSON receivedObject = JSON::parse(msg->str, nullptr,false);
+
                         if(receivedObject.is_discarded())
                          {
-                            std::cout << "error" << std::endl;
+                          //  std::cout << "error" << std::endl;
                          }
                          else
                          {
                              if (exists(receivedObject,"action"))
                              {
+                                    Cliente cliente;
                                     std::string action =receivedObject["action"];
                                     if (action == "BuscarCliente")
                                     {
-                                      JSON respuesta= Buscar_cliente(receivedObject);
+
+                                      JSON respuesta = cliente.Buscar_cliente(db , receivedObject);
                                       webSocket->send(respuesta.dump());
+
+                                    }
+
+                                    if (action == "AnyadirCliente")
+                                    {
+
+                                      JSON respuesta = cliente.anyadir_cliente(db , receivedObject);
+                                      webSocket->send(respuesta.dump());
+
+                                    }
+                                    if (action == "BorrarCliente")
+                                    {
+
+                                      JSON respuesta = cliente.Borrar_cliente(db , receivedObject);
+                                      webSocket->send(respuesta.dump());
+
+                                    }
+                                    if (action == "ModificarCliente")
+                                    {
+
+                                      JSON respuesta = cliente.Modificar_cliente(db , receivedObject);
+                                      webSocket->send(respuesta.dump());
+
                                     }
                               }
                               else
@@ -127,11 +155,9 @@ int main(int argc, char *argv[])
     auto res = server.listen();
     if (!res.first)
     {
-        // Error handling
         return 1;
     }
     server.start();
     server.wait();
     server.stop();
-
 }

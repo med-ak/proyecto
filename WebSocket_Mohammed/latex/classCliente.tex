@@ -1,0 +1,113 @@
+\hypertarget{classCliente}{}\section{Cliente Class Reference}
+\label{classCliente}\index{Cliente@{Cliente}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classCliente_a2fffa29c5f9c5789b4ea383e0a880bb3}{load}} (Q\+Sql\+Database db, int id)
+\item 
+void \mbox{\hyperlink{classCliente_a00ab8014b69d2a87746dc1a62d26553a}{load\+Max\+Id}} ()
+\item 
+bool \mbox{\hyperlink{classCliente_a7c66dee805434f57fa5fa1322fc99312}{save}} ()
+\item 
+bool \mbox{\hyperlink{classCliente_a8f80581958278a04ead3224e5c840178}{remove}} ()
+\item 
+\mbox{\Hypertarget{classCliente_af54d252995a415d26d1f0ab2137c5a2b}\label{classCliente_af54d252995a415d26d1f0ab2137c5a2b}} 
+void {\bfseries set\+Cliente} (Q\+String Nombre, Q\+String Apellidos, Q\+String D\+NI, Q\+String Telefono, Q\+String Email)
+\item 
+\mbox{\Hypertarget{classCliente_a2d83adac4ca30293f35f61442222437b}\label{classCliente_a2d83adac4ca30293f35f61442222437b}} 
+void {\bfseries update\+Cliente} (int id, Q\+String Nombre, Q\+String Apellidos, Q\+String D\+NI, Q\+String Telefono, Q\+String Email)
+\item 
+\mbox{\hyperlink{classnlohmann_1_1basic__json}{J\+S\+ON}} \mbox{\hyperlink{classCliente_ac448f4e423f0e60d706e5e20e88212a9}{Buscar\+\_\+cliente}} (Q\+Sql\+Database db, \mbox{\hyperlink{classnlohmann_1_1basic__json}{J\+S\+ON}} received\+Object)
+\item 
+\mbox{\hyperlink{classnlohmann_1_1basic__json}{J\+S\+ON}} \mbox{\hyperlink{classCliente_a7411b49f5697dbb2eb47bff72f5681d4}{anyadir\+\_\+cliente}} (Q\+Sql\+Database db, \mbox{\hyperlink{classnlohmann_1_1basic__json}{J\+S\+ON}} received\+Object)
+\item 
+\mbox{\hyperlink{classnlohmann_1_1basic__json}{J\+S\+ON}} \mbox{\hyperlink{classCliente_ae439ec32dce5171c876e9a6210ca8633}{Borrar\+\_\+cliente}} (Q\+Sql\+Database db, \mbox{\hyperlink{classnlohmann_1_1basic__json}{J\+S\+ON}} received\+Object)
+\item 
+\mbox{\hyperlink{classnlohmann_1_1basic__json}{J\+S\+ON}} \mbox{\hyperlink{classCliente_a157d0a57e3a159c60395b0ef7cbafec7}{Modificar\+\_\+cliente}} (Q\+Sql\+Database db, \mbox{\hyperlink{classnlohmann_1_1basic__json}{J\+S\+ON}} received\+Object)
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCliente_a56dd19c1b620d62e50fe632e1a39fee2}\label{classCliente_a56dd19c1b620d62e50fe632e1a39fee2}} 
+static void {\bfseries get\+Database} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCliente_a378a16e32e275bc0a438621850b214a0}\label{classCliente_a378a16e32e275bc0a438621850b214a0}} 
+int {\bfseries m\+\_\+id\+Cliente} \{0\}
+\item 
+\mbox{\Hypertarget{classCliente_ae59e0a369e0a2c2244841b8bb1e72417}\label{classCliente_ae59e0a369e0a2c2244841b8bb1e72417}} 
+Q\+String {\bfseries m\+\_\+nombre} \{\char`\"{}\char`\"{}\}
+\item 
+\mbox{\Hypertarget{classCliente_a498d1e9c29bb09b2f234a2daa8b908af}\label{classCliente_a498d1e9c29bb09b2f234a2daa8b908af}} 
+Q\+String {\bfseries m\+\_\+apellidos} \{\char`\"{}\char`\"{}\}
+\item 
+\mbox{\Hypertarget{classCliente_ab19b5e88e6c7236cff04a966aa204a35}\label{classCliente_ab19b5e88e6c7236cff04a966aa204a35}} 
+Q\+String {\bfseries m\+\_\+dni} \{\char`\"{}\char`\"{}\}
+\item 
+\mbox{\Hypertarget{classCliente_a60e2692da61d73083faaa5ed093f7609}\label{classCliente_a60e2692da61d73083faaa5ed093f7609}} 
+Q\+String {\bfseries m\+\_\+telefono} \{\char`\"{}\char`\"{}\}
+\item 
+\mbox{\Hypertarget{classCliente_a9b604cb3030a93ce01ced3ba24c84338}\label{classCliente_a9b604cb3030a93ce01ced3ba24c84338}} 
+Q\+String {\bfseries m\+\_\+email} \{\char`\"{}\char`\"{}\}
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classCliente_a7411b49f5697dbb2eb47bff72f5681d4}\label{classCliente_a7411b49f5697dbb2eb47bff72f5681d4}} 
+\index{Cliente@{Cliente}!anyadir\+\_\+cliente@{anyadir\+\_\+cliente}}
+\index{anyadir\+\_\+cliente@{anyadir\+\_\+cliente}!Cliente@{Cliente}}
+\subsubsection{\texorpdfstring{anyadir\+\_\+cliente()}{anyadir\_cliente()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classnlohmann_1_1basic__json}{J\+S\+ON}} Cliente\+::anyadir\+\_\+cliente (\begin{DoxyParamCaption}\item[{Q\+Sql\+Database}]{db,  }\item[{\mbox{\hyperlink{classnlohmann_1_1basic__json}{J\+S\+ON}}}]{received\+Object }\end{DoxyParamCaption})}
+
+funcion para añadir el cliente y luego duelve sus datos en formato J\+S\+ON\mbox{\Hypertarget{classCliente_ae439ec32dce5171c876e9a6210ca8633}\label{classCliente_ae439ec32dce5171c876e9a6210ca8633}} 
+\index{Cliente@{Cliente}!Borrar\+\_\+cliente@{Borrar\+\_\+cliente}}
+\index{Borrar\+\_\+cliente@{Borrar\+\_\+cliente}!Cliente@{Cliente}}
+\subsubsection{\texorpdfstring{Borrar\+\_\+cliente()}{Borrar\_cliente()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classnlohmann_1_1basic__json}{J\+S\+ON}} Cliente\+::\+Borrar\+\_\+cliente (\begin{DoxyParamCaption}\item[{Q\+Sql\+Database}]{db,  }\item[{\mbox{\hyperlink{classnlohmann_1_1basic__json}{J\+S\+ON}}}]{received\+Object }\end{DoxyParamCaption})}
+
+funcion para borrar el cliente\mbox{\Hypertarget{classCliente_ac448f4e423f0e60d706e5e20e88212a9}\label{classCliente_ac448f4e423f0e60d706e5e20e88212a9}} 
+\index{Cliente@{Cliente}!Buscar\+\_\+cliente@{Buscar\+\_\+cliente}}
+\index{Buscar\+\_\+cliente@{Buscar\+\_\+cliente}!Cliente@{Cliente}}
+\subsubsection{\texorpdfstring{Buscar\+\_\+cliente()}{Buscar\_cliente()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classnlohmann_1_1basic__json}{J\+S\+ON}} Cliente\+::\+Buscar\+\_\+cliente (\begin{DoxyParamCaption}\item[{Q\+Sql\+Database}]{db,  }\item[{\mbox{\hyperlink{classnlohmann_1_1basic__json}{J\+S\+ON}}}]{received\+Object }\end{DoxyParamCaption})}
+
+funcion que duelve los datos de cliente en formato J\+S\+ON\mbox{\Hypertarget{classCliente_a2fffa29c5f9c5789b4ea383e0a880bb3}\label{classCliente_a2fffa29c5f9c5789b4ea383e0a880bb3}} 
+\index{Cliente@{Cliente}!load@{load}}
+\index{load@{load}!Cliente@{Cliente}}
+\subsubsection{\texorpdfstring{load()}{load()}}
+{\footnotesize\ttfamily void Cliente\+::load (\begin{DoxyParamCaption}\item[{Q\+Sql\+Database}]{db,  }\item[{int}]{id }\end{DoxyParamCaption})}
+
+funcion para buscar el cliente (recibe el id y me devuelve datos de cliente) desde bbdd \mbox{\Hypertarget{classCliente_a00ab8014b69d2a87746dc1a62d26553a}\label{classCliente_a00ab8014b69d2a87746dc1a62d26553a}} 
+\index{Cliente@{Cliente}!load\+Max\+Id@{load\+Max\+Id}}
+\index{load\+Max\+Id@{load\+Max\+Id}!Cliente@{Cliente}}
+\subsubsection{\texorpdfstring{load\+Max\+Id()}{loadMaxId()}}
+{\footnotesize\ttfamily void Cliente\+::load\+Max\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+funcion para buscar el cliente (me devuelve ultimo cliente que se ha insertado) desde bbdd \mbox{\Hypertarget{classCliente_a157d0a57e3a159c60395b0ef7cbafec7}\label{classCliente_a157d0a57e3a159c60395b0ef7cbafec7}} 
+\index{Cliente@{Cliente}!Modificar\+\_\+cliente@{Modificar\+\_\+cliente}}
+\index{Modificar\+\_\+cliente@{Modificar\+\_\+cliente}!Cliente@{Cliente}}
+\subsubsection{\texorpdfstring{Modificar\+\_\+cliente()}{Modificar\_cliente()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classnlohmann_1_1basic__json}{J\+S\+ON}} Cliente\+::\+Modificar\+\_\+cliente (\begin{DoxyParamCaption}\item[{Q\+Sql\+Database}]{db,  }\item[{\mbox{\hyperlink{classnlohmann_1_1basic__json}{J\+S\+ON}}}]{received\+Object }\end{DoxyParamCaption})}
+
+funcion para modificar los datos de cliente\mbox{\Hypertarget{classCliente_a8f80581958278a04ead3224e5c840178}\label{classCliente_a8f80581958278a04ead3224e5c840178}} 
+\index{Cliente@{Cliente}!remove@{remove}}
+\index{remove@{remove}!Cliente@{Cliente}}
+\subsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily bool Cliente\+::remove (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+borrar cliente en bbdd \mbox{\Hypertarget{classCliente_a7c66dee805434f57fa5fa1322fc99312}\label{classCliente_a7c66dee805434f57fa5fa1322fc99312}} 
+\index{Cliente@{Cliente}!save@{save}}
+\index{save@{save}!Cliente@{Cliente}}
+\subsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily bool Cliente\+::save (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+funcion para insertar (en caso de que id\+\_\+cliente=0) y modificar (en caso de que id\+\_\+cliente$>$0) en bbdd U\+P\+D\+A\+TE
+
+I\+N\+S\+E\+RT 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+cliente.\+h\item 
+\mbox{\hyperlink{cliente_8cpp}{cliente.\+cpp}}\end{DoxyCompactItemize}
