@@ -22,7 +22,7 @@ ClienteView::ClienteView(QWidget *parent) :
     ui->ButtonBuscar->setEnabled(false);
     ui->ButtonBorrar->setEnabled(false);
     connect(ui->txt_id, SIGNAL(textChanged(const QString &)), this, SLOT(comprobarParaBuscarYmodificar(const QString &)));
-
+    connect(this, SIGNAL(mensajeErrorS(QString)), this, SLOT(mensajeError(QString)));
 
 
 }
@@ -52,6 +52,14 @@ void ClienteView::mensajeError(QString mensaje)
     msgBox.setText(mensaje);
     msgBox.exec();
 }
+
+
+void ClienteView::mensajeErrorSignal(QString mensaje)
+{
+    emit mensajeErrorS(mensaje);
+}
+
+
 void ClienteView::rellenarTabla(DatosCliente datosCliente)
 {
 

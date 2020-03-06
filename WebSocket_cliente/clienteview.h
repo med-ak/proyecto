@@ -18,10 +18,12 @@ public:
     explicit ClienteView(QWidget *parent = nullptr);
     ~ClienteView();
 
+    void mensajeErrorSignal(QString mensaje);
 
 private:
     Ui::ClienteView *ui;
     QTimer *timer;
+
 
 public slots:
 
@@ -33,6 +35,8 @@ public slots:
     void mensajeError(QString mensaje);
 
 
+signals:
+    void mensajeErrorS(QString mensaje);
 
 private slots:
 
