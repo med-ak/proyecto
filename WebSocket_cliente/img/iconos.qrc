@@ -10,5 +10,7 @@
         <file>pedidos.png</file>
         <file>productos.png</file>
         <file>proveedores.png</file>
+        <file>limpiar.png</file>
+        <file>salir.png</file>
     </qresource>
 </RCC>

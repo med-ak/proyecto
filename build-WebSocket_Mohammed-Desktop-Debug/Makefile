@@ -51,9 +51,11 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../WebSocket_Mohammed/main.cpp \
-		../WebSocket_Mohammed/cliente.cpp 
+		../WebSocket_Mohammed/cliente.cpp \
+		../WebSocket_Mohammed/Conexion.cpp 
 OBJECTS       = main.o \
-		cliente.o
+		cliente.o \
+		Conexion.o
 DIST          = /usr/lib64/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib64/qt5/mkspecs/common/unix.conf \
 		/usr/lib64/qt5/mkspecs/common/linux.conf \
@@ -230,8 +232,10 @@ DIST          = /usr/lib64/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib64/qt5/mkspecs/features/yacc.prf \
 		/usr/lib64/qt5/mkspecs/features/lex.prf \
 		../WebSocket_Mohammed/WebSocket_Mohammed.pro ../WebSocket_Mohammed/json.hpp \
-		../WebSocket_Mohammed/cliente.h ../WebSocket_Mohammed/main.cpp \
-		../WebSocket_Mohammed/cliente.cpp
+		../WebSocket_Mohammed/cliente.h \
+		../WebSocket_Mohammed/Conexion.h ../WebSocket_Mohammed/main.cpp \
+		../WebSocket_Mohammed/cliente.cpp \
+		../WebSocket_Mohammed/Conexion.cpp
 QMAKE_TARGET  = WebSocket_Mohammed
 DESTDIR       = 
 TARGET        = WebSocket_Mohammed
@@ -615,8 +619,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib64/qt5/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../WebSocket_Mohammed/json.hpp ../WebSocket_Mohammed/cliente.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../WebSocket_Mohammed/main.cpp ../WebSocket_Mohammed/cliente.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../WebSocket_Mohammed/json.hpp ../WebSocket_Mohammed/cliente.h ../WebSocket_Mohammed/Conexion.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../WebSocket_Mohammed/main.cpp ../WebSocket_Mohammed/cliente.cpp ../WebSocket_Mohammed/Conexion.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -683,8 +687,10 @@ main.o: ../WebSocket_Mohammed/main.cpp ../compiled2/include/ixwebsocket/IXWebSoc
 		../compiled2/include/ixwebsocket/IXSocket.h \
 		../compiled2/include/ixwebsocket/IXWebSocketInitResult.h \
 		../compiled2/include/ixwebsocket/IXWebSocketPerMessageDeflate.h \
+		../compiled2/include/ixwebsocket/IXSocketOpenSSL.h \
 		../WebSocket_Mohammed/json.hpp \
-		../WebSocket_Mohammed/cliente.h
+		../WebSocket_Mohammed/cliente.h \
+		../WebSocket_Mohammed/Conexion.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../WebSocket_Mohammed/main.cpp
 
 cliente.o: ../WebSocket_Mohammed/cliente.cpp ../WebSocket_Mohammed/cliente.h \
@@ -711,6 +717,9 @@ cliente.o: ../WebSocket_Mohammed/cliente.cpp ../WebSocket_Mohammed/cliente.h \
 		../compiled2/include/ixwebsocket/IXWebSocketInitResult.h \
 		../compiled2/include/ixwebsocket/IXWebSocketPerMessageDeflate.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cliente.o ../WebSocket_Mohammed/cliente.cpp
+
+Conexion.o: ../WebSocket_Mohammed/Conexion.cpp ../WebSocket_Mohammed/Conexion.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Conexion.o ../WebSocket_Mohammed/Conexion.cpp
 
 ####### Install
 

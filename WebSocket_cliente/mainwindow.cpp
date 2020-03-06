@@ -6,6 +6,7 @@
 #include "json.hpp"
 #include <QString>
 #include <QMap>
+#include <QMessageBox>
 
 /*!\file*/
 
@@ -42,22 +43,33 @@ MainWindow::~MainWindow()
  */
 void MainWindow::startWSClient()
 {
-    m_webSocket->setUrl(std::string("wss://localhost:9990"));
+    //m_webSocket->setUrl(std::string("wss://localhost:9990"));
+     m_webSocket->setUrl(std::string("ws://localhost:9990"));
     ix::SocketTLSOptions tlsOptions;
     tlsOptions.tls =true;
     tlsOptions.certFile = "NONE";
     tlsOptions.keyFile = "NONE";
-    tlsOptions.caFile = "/home/moha/Escritorio/TrabajoMohamed/WebSocket_cliente/cert/myCA.pem";
+    tlsOptions.caFile ="/home/moha/Escritorio/WebSocket_Mohammed/cert/myCA.pem";
 
     if(tlsOptions.isValid())
     {
        std::cerr <<"SSL valid"<< std::endl;
     }
-    m_webSocket->setTLSOptions(tlsOptions);
+   // m_webSocket->setTLSOptions(tlsOptions);
 
 
     m_webSocket->setOnMessageCallback([this](const ix::WebSocketMessagePtr& msg)
      {
+
+        if (msg->type == ix::WebSocketMessageType::Open)
+        {
+            std::cout << "conexion con el Servidor" << std::endl;
+
+        }
+        else if (msg->type == ix::WebSocketMessageType::Close)
+        {
+            std::cout << "Bye bye connection" << std::endl;
+        }
          if (msg->type == ix::WebSocketMessageType::Message)
          {
              //  std::cout << msg->str << std::endl;
@@ -87,9 +99,10 @@ void MainWindow::startWSClient()
                           JSON respuesta = receivedObject["BuscarCliente"];
 
                              int idWsCliente = receivedObject["idWsCliente"];
+                             int idcliente = respuesta["id"];
 
                              qDebug()<< "----idWSCliente_recibido";
-                             qDebug()<<idWsCliente;
+                             qDebug()<<idcliente;
                              qDebug()<<"-------------------------";
 
                              auto element {m_actions.find(idWsCliente)};
@@ -112,10 +125,10 @@ void MainWindow::startWSClient()
                           JSON respuesta = receivedObject["ClienteCreado"];
                           cliente.VerRespuesta(respuesta);
                         }
-                        if (action == "BorrarCliente")
+                        if (action == "ClienteBorrado")
                         {
-                          JSON respuesta = receivedObject["BorrarCliente"];
-                          cliente.VerRespuesta(respuesta);
+                          JSON respuesta = receivedObject["ClienteBorrado"];
+                          cliente.respuestaBorrarCliente(respuesta);
                         }
 
                         if (action == "ClienteModificado")
@@ -149,13 +162,9 @@ void MainWindow::on_ButtonCliente_clicked()
     clienteview->setMainWindow(this);
     clienteview->setWebSocket(m_webSocket);
     clienteview->show();
+    this->window();
 
-    ui->ButtonCliente->hide();
-    ui->ButtonProveedores->hide();
-    ui->ButtonProductos->hide();
-    ui->ButtonUsuarios->hide();
-    ui->ButtonFacturas->hide();
-    ui->ButtonPedidos->hide();
+
 
 
 }

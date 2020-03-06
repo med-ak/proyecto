@@ -14,7 +14,6 @@ using JSON = nlohmann::json;
 static int g_idMensaje =0;
 void Cliente::getDatabase(){
 
-
 }
 
 int dameIdMensaje(){
@@ -31,13 +30,15 @@ JSON Cliente::Buscar_cliente(QSqlDatabase db , JSON receivedObject){
      * funcion que duelve los datos de cliente en formato JSON
      */
     JSON respuesta;
-    int Loadid=receivedObject["id"];
+    JSON datos;
 
+    int Loadid=receivedObject["id"];
 
     qDebug() << "ID: " << Loadid;
     Cliente c;
     c.load(db , Loadid);
-    JSON datos;
+    //qDebug() << "ID-Devuelto " << c.m_idCliente;
+
 
        datos["id"] = c.m_idCliente;
        datos["nombre"] = c.m_nombre.toStdString();
@@ -50,12 +51,11 @@ JSON Cliente::Buscar_cliente(QSqlDatabase db , JSON receivedObject){
        respuesta["type"]= "BuscarCliente";
        respuesta["BuscarCliente"] = datos;
 
-
     return  respuesta;
 }
 
-
 /*!\file*/
+
 JSON Cliente::anyadir_cliente(QSqlDatabase db, JSON receivedObject){
     /**
      * funcion para añadir el cliente y luego duelve sus datos en formato JSON
@@ -95,7 +95,7 @@ JSON Cliente::Modificar_cliente(QSqlDatabase db,JSON receivedObject){
      */
 
     JSON respuesta;
-    int idClienteRecibido=receivedObject["id"];
+    int idClienteRecibido=receivedObject["idcliente"];
     QString nombreRecibido=QString::fromStdString(receivedObject["nombre"]);
     QString apellidosRecibido=QString::fromStdString(receivedObject["apellidos"]);
     QString dniRecibido=QString::fromStdString(receivedObject["dni"]);
@@ -128,22 +128,24 @@ JSON Cliente::Borrar_cliente(QSqlDatabase db  , JSON receivedObject){
      * funcion para borrar el cliente
      */
     JSON respuesta;
-    int Loadid=receivedObject["id"];
+    int Loadid=receivedObject["idcliente"];
     qDebug() << "ID: " << Loadid;
     Cliente c;
     c.load(db , Loadid);
     c.remove();
-    c.load(db , Loadid);
-    JSON datos;
 
+    JSON datos;
     datos["id"] = c.m_idCliente;
     respuesta["idServidor"]= dameIdMensaje();
     respuesta["idWsCliente"]=receivedObject["idWsCliente"];
-    respuesta["type"]= "BorrarCliente";
-    respuesta["BorrarCliente"] = datos;
+     respuesta["type"]="ClienteBorrado";
+    respuesta["ClienteBorrado"] = datos;
+
     return  respuesta;
 }
-
+/**
+ * @brief Constructor Cliente
+ */
 Cliente::Cliente()
 {
 }
@@ -205,7 +207,7 @@ bool Cliente::remove()
         q.bindValue(":idCliente", m_idCliente);
         result = q.exec();
     } // end if
-    qDebug() << "mensajeBorrarCliente" << result;
+    qDebug() << "ClienteBorrado" << result;
     return result;
 
 }

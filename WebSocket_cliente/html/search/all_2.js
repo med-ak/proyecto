@@ -6,7 +6,7 @@ var searchData=
   ['chars_5fread_5fcurrent_5fline',['chars_read_current_line',['../structnlohmann_1_1detail_1_1position__t.html#a74df94563dd32102152ceb8c6d9041d8',1,'nlohmann::detail::position_t']]],
   ['chars_5fread_5ftotal',['chars_read_total',['../structnlohmann_1_1detail_1_1position__t.html#a94cf85cd91d478c20ae143eba906ea1a',1,'nlohmann::detail::position_t']]],
   ['clear',['clear',['../classnlohmann_1_1basic__json.html#abfeba47810ca72f2176419942c4e1952',1,'nlohmann::basic_json']]],
-  ['cliente',['Cliente',['../classCliente.html',1,'']]],
+  ['cliente',['Cliente',['../classCliente.html',1,'Cliente'],['../classCliente.html#ab6a372f412692c12c4be4427b00a3f6e',1,'Cliente::Cliente()']]],
   ['cliente_2ecpp',['cliente.cpp',['../cliente_8cpp.html',1,'']]],
   ['clienteview',['ClienteView',['../classClienteView.html',1,'ClienteView'],['../classClienteView.html#ab1362a221096c58d062d904c2c399059',1,'ClienteView::ClienteView()']]],
   ['clienteview_2ecpp',['clienteview.cpp',['../clienteview_8cpp.html',1,'']]],

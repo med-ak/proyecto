@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
     ///cargar el archivo archivo de traduccion
 
     QTranslator myappTranslator;
-    myappTranslator.load("myapp_en_US.ts");
+    myappTranslator.load("/home/moha/Escritorio/TrabajoMohamed/Traduccion/myapp_en_US.ts");
     a.installTranslator(&myappTranslator);
 
 

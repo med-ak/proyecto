@@ -27,7 +27,7 @@ public:
     void loadMaxId();
     bool save();
     bool remove();
-
+    bool validarID(int id_Cliente);
 
     void setCliente(QString Nombre,QString Apellidos,QString DNI,QString Telefono,QString Email);
     void updateCliente(int id,QString Nombre,QString Apellidos,QString DNI,QString Telefono,QString Email);

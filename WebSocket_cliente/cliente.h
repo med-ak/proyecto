@@ -44,7 +44,8 @@ public:
 
 
     void VerRespuesta(JSON respuesta);
-    void RespuestaBorrarCliente(JSON respuesta);
+    void respuestaBorrarCliente(JSON respuesta);
+
 
     void respuestaLista(DatosCliente);
 

@@ -11,6 +11,7 @@
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include "cliente.h"
+#include "Conexion.h"
 
 /*!\file*/
 
@@ -29,34 +30,32 @@ int main()
 {
 
     ///conexion con la base de datos
+    Conexion c;
 
-    db = QSqlDatabase::addDatabase("QPSQL");
+   /* db = QSqlDatabase::addDatabase("QPSQL");
+
     db.setHostName("localhost");
     db.setDatabaseName("venta");
     db.setPort(5432);
     db.setUserName("postgres");
-    db.setPassword("");
-    bool ok = db.open();
+    db.setPassword("");*/
+    bool ok = c.open();
     qDebug()<< ok;
-    qDebug()<< db.lastError().text();
+   // qDebug()<< c.lastError().text();
 
- /*   if (ok)
-    {
-       Cliente c;
-     c.load(9);
-      //  c.setCliente("moha","aknioui","yyyyy","55555","dddd");
-      //  c.save();
-      c.remove();
+   if (ok)
+       {
+            qDebug()<<" conexion con BBDD ";
+        } else {
+            qDebug()<<" ERROR en  conexion con BBDD : verifica el archivo bbdd.conf";
+        }// fin_if
 
-
-    } // end if
-*/
    /// Servidor WebSocket
     ix::WebSocketServer server(9990, "0.0.0.0");
 
    /// SSL
-    ix::SocketTLSOptions tlsOptions;
-    tlsOptions.tls =true;
+     ix::SocketTLSOptions tlsOptions;
+   tlsOptions.tls =true;
     tlsOptions.certFile = "../WebSocket_Mohammed/cert/localhost.crt";
     tlsOptions.keyFile = "../WebSocket_Mohammed/cert/localhost.key";
     tlsOptions.caFile = "NONE";
@@ -66,7 +65,7 @@ int main()
   std::cerr <<"SSL valid"<< std::endl;
   }
 
-  server.setTLSOptions(tlsOptions);
+  //server.setTLSOptions(tlsOptions);
 
   /**
    *  funcion lambda: enviar y recibir mensajes JSON

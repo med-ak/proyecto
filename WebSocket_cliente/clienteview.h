@@ -2,21 +2,21 @@
 #define CLIENTEVIEW_H
 
 #include "cliente.h"
-#include <QWidget>
+
+#include <QDialog>
+#include <QTableWidgetItem>
 
 namespace Ui {
 class ClienteView;
 }
 
-class ClienteView : public QWidget, public Cliente
+class ClienteView : public QDialog, public Cliente
 {
    Q_OBJECT
 
 public:
     explicit ClienteView(QWidget *parent = nullptr);
     ~ClienteView();
-
-
 
 
 private:
@@ -30,17 +30,29 @@ public slots:
     void on_ButtonBorrar_clicked();
     void on_ButtonModificar_clicked();
     void rellenarTabla(DatosCliente datosCliente);
+    void mensajeError(QString mensaje);
+
+
+
+private slots:
+
+    void on_pushButtonLimpar_clicked();
+    void on_pushButtonSalir_clicked();
+    void on_tablaCliente_itemClicked(QTableWidgetItem *item);
+    void comprobarParaBuscarYmodificar(const QString &text);
+
 
 
 private:
-
-    int txtID =0;
+    MainWindow *mainwindow;
+    int intID =0;
     std::string txtNombre {""};
     std::string txtApellidos {""};
     std::string txtDni {""};
     std::string txtTelefono{""};
     std::string txtEmail {""};
     void clear();
+    void limpiarTabla();
 
 
 

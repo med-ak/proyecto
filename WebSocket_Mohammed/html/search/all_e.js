@@ -5,6 +5,7 @@ var searchData=
   ['object_5fiterator',['object_iterator',['../structnlohmann_1_1detail_1_1internal__iterator.html#a8cb0af3498061426c1d0a65ad6220408',1,'nlohmann::detail::internal_iterator']]],
   ['object_5fstart',['object_start',['../classnlohmann_1_1detail_1_1parser.html#a37ac88c864dda495f72cb62776b0bebeae73f17027cb0acbb537f29d0a6944b26',1,'nlohmann::detail::parser']]],
   ['object_5ft',['object_t',['../classnlohmann_1_1basic__json.html#a5e48a7893520e1314bf0c9723e26ea2a',1,'nlohmann::basic_json']]],
+  ['open',['open',['../classConexion.html#af697de4217c41446258b49844b4d85c1',1,'Conexion']]],
   ['operator_20size_5ft',['operator size_t',['../structnlohmann_1_1detail_1_1position__t.html#ac9ad1e0f143f162e2e0c979cd678d683',1,'nlohmann::detail::position_t']]],
   ['operator_20value_5ft',['operator value_t',['../classnlohmann_1_1basic__json.html#a26ef3058e249f82a04f8ec18f7419027',1,'nlohmann::basic_json']]],
   ['operator_20valuetype',['operator ValueType',['../classnlohmann_1_1basic__json.html#a1f1d4bc973c5b866db3d96e14d2c9f3f',1,'nlohmann::basic_json']]],

@@ -6,7 +6,8 @@ CONFIG -= app_bundle
 
 SOURCES += \
         main.cpp \
-        cliente.cpp
+        cliente.cpp \
+    Conexion.cpp
 
 
 LIBS += -pthread -lz -lssl -lcrypto
@@ -45,7 +46,8 @@ else:unix: PRE_TARGETDEPS += $$PWD/../compiled2/lib/libixwebsocket.a
 
 HEADERS += \
     json.hpp \
-    cliente.h
+    cliente.h \
+    Conexion.h
 
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../compiled2/lib/release/ -lixwebsocket
