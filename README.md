@@ -1,11 +1,11 @@
-﻿Descripción del proyecto:
+## Descripción del proyecto:
 Se trata de un programa que simula el funcionamiento de la gestión de venta.
 
 El Cliente: realizado en C++ utilizando Qt para realizar la interfaz,para comunicarse utilizando  el protocolo webSocket seguro (WSS) y para los mensajes el JSON el programa muestra todo lo necesario para editar, crear ,borrar ,buscar y mostrar los datos.
 
 Servidor: hecho con C++ ,para comunicarse utilizando  el protocolo webSocket y una base de datos con PostgreSQL.
 
-Tecnologías implementadas:
+## Tecnologías implementadas:
     • C++ Lenguaje de programación .
     • PostgreSQL motor de bases de datos.
     • QT Entorno de desarrollo .
@@ -15,7 +15,7 @@ Tecnologías implementadas:
     • WebSocket para la comunicación.
     • Json para enviar y recibir mensajes  Cliente-servidor
 
-Autor 
+## Autor 
 Mohammed Aknioui
 
 
