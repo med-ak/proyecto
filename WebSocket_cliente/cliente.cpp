@@ -30,7 +30,7 @@ void Cliente::VerRespuesta(JSON respuesta)
     datosCliente.c_email = QString::fromStdString(respuesta["email"]);
     if(datosCliente.c_idCliente==0)
     {
-     m_mainWindow->clienteView()->mensajeErrorSignal("Ya no existe este cliente.");
+     m_mainWindow->clienteView()->mensajeErrorSignal("No existe el  cliente.");
     }else
     {
      m_mainWindow->clienteView()->rellenarTabla(datosCliente);
@@ -46,7 +46,7 @@ void Cliente::respuestaBorrarCliente(JSON respuesta)
 
     if(idCliente > 0)
     {
-     m_mainWindow->clienteView()->mensajeError("El cliente ha sido borrado correctamente.");
+     m_mainWindow->clienteView()->mensajeErrorSignal("El cliente ha sido borrado correctamente.");
     }
 
 }

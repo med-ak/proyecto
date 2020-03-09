@@ -33,11 +33,10 @@ JSON Cliente::Buscar_cliente(QSqlDatabase db , JSON receivedObject){
     JSON datos;
 
     int Loadid=receivedObject["id"];
-
     qDebug() << "ID: " << Loadid;
     Cliente c;
     c.load(db , Loadid);
-    //qDebug() << "ID-Devuelto " << c.m_idCliente;
+       //qDebug() << "ID-Devuelto " << c.m_idCliente;
 
 
        datos["id"] = c.m_idCliente;
@@ -189,10 +188,28 @@ void Cliente::loadMaxId()
          m_dni = q.value("dni").toString();
          m_telefono = q.value("Telefono").toString();
          m_email = q.value("Email").toString();
-
     } // end if
 }
 
+
+void Cliente::loadAll()
+{
+    QSqlQuery q;
+    q.prepare("SELECT * FROM venta.clientes");
+    bool result {q.exec()};
+
+    if (result)
+    {
+        while(q.next()){
+         m_idCliente = q.value("id_cliente").toInt();
+         m_nombre = q.value("Nombre").toString();
+         m_apellidos = q.value("Apellidos").toString();
+         m_dni = q.value("dni").toString();
+         m_telefono = q.value("Telefono").toString();
+         m_email = q.value("Email").toString();
+        }//fin while
+    } // end if
+}
 /**
  * borrar cliente en bbdd
  */

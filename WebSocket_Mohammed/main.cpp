@@ -11,7 +11,7 @@
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include "cliente.h"
-#include "Conexion.h"
+#include "conexion.h"
 
 /*!\file*/
 

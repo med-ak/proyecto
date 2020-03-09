@@ -41,7 +41,7 @@ signals:
 private slots:
 
     void on_pushButtonLimpar_clicked();
-    void on_pushButtonSalir_clicked();
+    void on_pushButtonVolver_clicked();
     void on_tablaCliente_itemClicked(QTableWidgetItem *item);
     void comprobarParaBuscarYmodificar(const QString &text);
 

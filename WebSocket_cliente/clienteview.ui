@@ -156,6 +156,9 @@
      <property name="editTriggers">
       <set>QAbstractItemView::NoEditTriggers</set>
      </property>
+     <property name="selectionBehavior">
+      <enum>QAbstractItemView::SelectRows</enum>
+     </property>
      <property name="showGrid">
       <bool>true</bool>
      </property>
@@ -400,7 +403,7 @@
       </font>
      </property>
      <property name="text">
-      <string> Limpiar</string>
+      <string> Limpiar Tabla</string>
      </property>
      <property name="icon">
       <iconset resource="img/iconos.qrc">
@@ -471,7 +474,7 @@
     </widget>
    </item>
    <item row="10" column="10" colspan="3">
-    <widget class="QPushButton" name="pushButtonSalir">
+    <widget class="QPushButton" name="pushButtonVolver">
      <property name="minimumSize">
       <size>
        <width>200</width>
@@ -492,7 +495,7 @@
       </font>
      </property>
      <property name="text">
-      <string> Salir</string>
+      <string>Volver</string>
      </property>
      <property name="icon">
       <iconset resource="img/iconos.qrc">

@@ -31,18 +31,20 @@ ClienteView::~ClienteView()
 {
     delete ui;
 }
+
+
 void ClienteView::comprobarParaBuscarYmodificar(const QString &text){
 
     if(text.isEmpty()){
-      ui->ButtonBuscar->setEnabled(false);
-       ui->ButtonBorrar->setEnabled(false);
-      ui->ButtonAnyadir->setEnabled(true);
+        ui->ButtonBuscar->setEnabled(false);
+        ui->ButtonBorrar->setEnabled(false);
+        ui->ButtonAnyadir->setEnabled(true);
     }
     else
     {
-    ui->ButtonBuscar->setEnabled(true);
-    ui->ButtonBorrar->setEnabled(true);
-    ui->ButtonAnyadir->setEnabled(false);
+        ui->ButtonBuscar->setEnabled(true);
+        ui->ButtonBorrar->setEnabled(true);
+        ui->ButtonAnyadir->setEnabled(false);
     }
 }
 
@@ -95,7 +97,7 @@ void ClienteView::rellenarTabla(DatosCliente datosCliente)
 void ClienteView::on_ButtonBuscar_clicked()
 {
     intID = ui->txt_id->text().toInt();
-    if(intID > 0){
+    //if(intID > 0){
     int messageId {newMessageId()};
     JSON jsonMessage = {
                         {"action","BuscarCliente"},
@@ -112,7 +114,7 @@ void ClienteView::on_ButtonBuscar_clicked()
     std::string messageToSend = jsonMessage.dump();
     m_webSocket->send(messageToSend);
     clear();
-    }
+   // }
 }
 
 
@@ -229,7 +231,7 @@ void ClienteView::on_tablaCliente_itemClicked(QTableWidgetItem *item)
 
      }
 
-void ClienteView::on_pushButtonSalir_clicked()
+void ClienteView::on_pushButtonVolver_clicked()
 {
     this->hide();
     MainWindow w;

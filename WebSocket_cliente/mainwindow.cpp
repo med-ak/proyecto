@@ -77,7 +77,7 @@ void MainWindow::startWSClient()
              if (!msg->binary)
              {
                  /// Text format
-            // std::cout << "Received message: " << msg->str << std::endl;
+             std::cout << "Received message: " << msg->str << std::endl;
              }
 
             JSON receivedObject = JSON::parse(msg->str, nullptr,false);
@@ -173,4 +173,9 @@ void MainWindow::on_ButtonCliente_clicked()
 ClienteView* MainWindow::clienteView()
 {
     return clienteview;
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+     this->hide();
 }

@@ -25,6 +25,7 @@ public:
     Cliente();
     void load(QSqlDatabase db ,int id);
     void loadMaxId();
+    void loadAll();
     bool save();
     bool remove();
     bool validarID(int id_Cliente);
